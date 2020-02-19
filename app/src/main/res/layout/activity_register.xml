@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#304769"
+    android:orientation="vertical"
+    android:paddingTop="2dp"
+    android:paddingBottom="2dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    tools:context=".activity.RegisterActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:text="@string/sign_up"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="26sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/etFullName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@android:color/white"
+        android:hint="@string/full_name"
+        android:inputType="textPersonName"
+        android:padding="7dp" />
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@android:color/white"
+        android:hint="@string/username"
+        android:inputType="textPersonName"
+        android:padding="7dp" />
+
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@android:color/white"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:padding="7dp" />
+
+    <EditText
+        android:id="@+id/etConfirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@android:color/white"
+        android:hint="@string/confirm_password"
+        android:inputType="textPassword"
+        android:padding="7dp" />
+
+    <LinearLayout
+        android:id="@+id/llImageSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#405980"
+        android:padding="1dp"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Choose Image"
+            android:id="@+id/buttonChoose"
+            android:drawableRight="@android:drawable/ic_menu_gallery"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:id="@+id/imageView" />
+
+        <EditText
+            android:id="@+id/etImageName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@android:color/white"
+            android:hint="write image name"
+            android:inputType="textPassword"
+            android:padding="7dp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="#f05924"
+        android:text="@string/register"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="center"
+        android:text="@string/already_having_account"
+        android:textColor="#ccc" />
+
+    <Button
+        android:id="@+id/btnRegisterLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="#aaa"
+        android:text="@string/log_in"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>
