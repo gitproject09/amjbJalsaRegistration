@@ -2,13 +2,213 @@
     <string name="app_name">Jalsa Registration</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
-    <string name="sign_in">Sign In</string>
     <string name="register">Register</string>
     <string name="full_name">Full Name</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="already_having_account">Already Having an Account?</string>
     <string name="log_in">Log In</string>
     <string name="not_having_account">Not Having an Account?</string>
-    <string name="sign_up">Sign Up</string>
     <string name="logout">Logout</string>
+
+    <string name="choose_image">Select your picture</string>
+    <string name="gallery">Gallery</string>
+    <string name="camera">Camera</string>
+
+
+    <string name="loading">Loading…</string>
+
+    <string name="upload_from_file">Upload from file</string>
+    <string name="upload_resume">Resume upload</string>
+    <string name="upload_paused">Upload is paused</string>
+    <string name="metadata_get">Get metadata</string>
+    <string name="metadata_update">Update metadata</string>
+    <string name="button_upload">Upload</string>
+    <string name="button_download">Download</string>
+    <string name="txt_heading">Ahmadiyya Muslim Jamat Bangladesh\n4 Bakshi Bazar Road Dhaka 1211</string>
+    <string name="txt_nazem_reg">Nezamot Registration\n96th National Jalsa 2019</string>
+    <string name="registration">96th National Jalsa : Registration</string>
+    <string name="registration_list">Registration List</string>
+    <string name="duplicate_user">This information is already taken.\nPlease try another one.</string>
+
+    <string name="btn_delete">Delete</string>
+
+    <string name="btn_update">Update</string>
+
+    <string name="required">Required</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Register</string>
+
+    <string name="ucrop_rotate">Rotate</string>
+    <string name="ucrop_scale">Scale</string>
+    <string name="ucrop_crop">Crop</string>
+
+    <string name="title_activity_fullscreen_image_view">Fullscreen Image</string>
+
+    <string name="toast_image_intent_null">Image picker option is missing!</string>
+
+    <string name="lbl_set_profile_photo">Set profile image</string>
+
+    <string name="lbl_take_camera_picture">Take a picture</string>
+
+    <string name="lbl_choose_from_gallery">Choose from gallery</string>
+    <string name="font_family_light">sans-serif-light</string>
+    <string name="font_family_medium">sans-serif-medium</string>
+    <string name="font_family_regular">sans-serif</string>
+    <string name="font_family_condensed">sans-serif-condensed</string>
+
+    <!-- font families -->
+    <string name="font_family_black">sans-serif-black</string>
+    <string name="font_family_thin">sans-serif-thin</string>
+    <string name="dialog_permission_title">Grant Permissions</string>
+    <string name="dialog_permission_message">This app needs permission to use this feature. You can grant them in app settings.</string>
+    <string name="go_to_settings">GOTO SETTINGS</string>
+    <string-array name="majlish_list">
+        <item>Ahmadnagar</item>
+        <item>Ambarnagar</item>
+        <item>Ashkona</item>
+        <item>Ashulia</item>
+        <item>Baghmara</item>
+        <item>Baniajan</item>
+        <item>Barishal</item>
+        <item>Basharukh</item>
+        <item>Bhadugarh</item>
+        <item>Bhatgaon</item>
+        <item>Birganj</item>
+        <item>Birgaon</item>
+        <item>Bishnopur</item>
+        <item>Bogura</item>
+        <item>Boro Baishdia</item>
+        <item>Brahmanbaria</item>
+        <item>Butiapara</item>
+        <item>Chandpur Cha Bagan</item>
+        <item>Chantara</item>
+        <item>Charsindur</item>
+        <item>Chattogram</item>
+        <item>Chonotia</item>
+        <item>Choraikhola</item>
+        <item>Choadanga</item>
+        <item>Comilla</item>
+        <item>Crora</item>
+        <item>Dhaka</item>
+        <item>Dhanikhola</item>
+        <item>Dinajpur</item>
+        <item>Dohanda</item>
+        <item>Durgarampur</item>
+        <item>Fajilpur</item>
+        <item>Fatulla</item>
+        <item>Fulbaria</item>
+        <item>Gaibandha</item>
+        <item>Gazipur</item>
+        <item>Gharilal</item>
+        <item>Helenchakuri</item>
+        <item>Hosnabad</item>
+        <item>Hossenpur</item>
+        <item>Islamganj</item>
+        <item>Jamalpur</item>
+        <item>Jamalpur (Hobi.)</item>
+        <item>Jessore</item>
+        <item>Kabirpur</item>
+        <item>Kafuria</item>
+        <item>Katiadi</item>
+        <item>Kaunia</item>
+        <item>Khakdan</item>
+        <item>Khudro Bbaria</item>
+        <item>Khudropara</item>
+        <item>Khulna</item>
+        <item>Komolapukuri</item>
+        <item>Koritola</item>
+        <item>Krishnanagar</item>
+        <item>Kukua</item>
+        <item>Kushtia</item>
+        <item>Lalmonir Hath</item>
+        <item>Mahiganj</item>
+        <item>Mahilla</item>
+        <item>Menan Nagar</item>
+        <item>Merigacha</item>
+        <item>Mirgang</item>
+        <item>Mirpur</item>
+        <item>Moharajpur</item>
+        <item>Munshiganj</item>
+        <item>Mymensingh</item>
+        <item>Narayanganj</item>
+        <item>Naserabad</item>
+        <item>Natai</item>
+        <item>Nazirpur</item>
+        <item>Netrokona</item>
+        <item>New Sonatala</item>
+        <item>Nilphamari</item>
+        <item>Noornagar</item>
+        <item>Narsingdi</item>
+        <item>Nusratabad</item>
+        <item>Patuakhali</item>
+        <item>Purulia</item>
+        <item>Rajshahi</item>
+        <item>Rangpur</item>
+        <item>Rangtia</item>
+        <item>Rikabi Bazar</item>
+        <item>Roghunathpur Bagh</item>
+        <item>Saidpur</item>
+        <item>Selborosh</item>
+        <item>Shahbajpur</item>
+        <item>Shailmari</item>
+        <item>Shalgaon</item>
+        <item>Shalshiri</item>
+        <item>Sharforajpur</item>
+        <item>Sharishabari</item>
+        <item>Shyampur</item>
+        <item>Sirajganj</item>
+        <item>Sonargaon</item>
+        <item>Shohagi</item>
+        <item>Sundarban</item>
+        <item>Sylhet</item>
+        <item>Taherabad</item>
+        <item>Taherpur</item>
+        <item>Talshahar</item>
+        <item>Tarua</item>
+        <item>Tebaria</item>
+        <item>Tejgaon</item>
+        <item>Terogati</item>
+        <item>Ullapara</item>
+        <item>Umedpur</item>
+        <item>Uthulee</item>
+        <item>Uttar Baherchar</item>
+        <item>Uttar Bhabanipur</item>
+
+    </string-array>
+    <string-array name="group_list">
+        <item>Ansar</item>
+        <item>Khuddam</item>
+        <item>Atfal</item>
+        <item>Nau Mobain</item>
+        <item>Mehman</item>
+        <item>Lajna</item>
+        <item>Naserat</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="blood_group_list">
+        <item>O−</item>
+        <item>O+</item>
+        <item>A−</item>
+        <item>A+</item>
+        <item>B−</item>
+        <item>B+</item>
+        <item>AB−</item>
+        <item>AB+</item>
+        <item>Dont know</item>
+    </string-array>
+    <string-array name="month_list">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+
 </resources>

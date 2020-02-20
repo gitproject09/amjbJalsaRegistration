@@ -1,4 +1,4 @@
-# [Jalsa Salana Bangladesh : Registration App
+# [Jalsa Salana Bangladesh : Registration App]
 ## Developer: [Sopan Ahmed][instructor url]
 
 

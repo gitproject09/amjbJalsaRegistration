@@ -15,7 +15,7 @@ import org.amcbd.jalsa_registration.base_url.BaseUrl;
 import org.amcbd.jalsa_registration.model.SessionHandler;
 import org.amcbd.jalsa_registration.model.User;
 
-public class DashboardActivity extends AppCompatActivity {
+public class DashboardActivity extends BaseActivity {
 
     private SessionHandler session;
 
@@ -28,7 +28,7 @@ public class DashboardActivity extends AppCompatActivity {
         TextView welcomeText = findViewById(R.id.welcomeText);
         ImageView ivProfileImage = findViewById(R.id.ivProfileImage);
 
-        Picasso.with(this)
+        Picasso.get()
                 .load(BaseUrl.baseUrl + "upload_image/" + user.getImagePath())
                 // .memoryPolicy(MemoryPolicy.NO_CACHE)
                 // .networkPolicy(NetworkPolicy.NO_CACHE)
@@ -38,7 +38,7 @@ public class DashboardActivity extends AppCompatActivity {
                 .noFade()
                 .into(ivProfileImage);
 
-        welcomeText.setText("Welcome To The 96th Jalsa Salana Bangladesh\n\n"+ "Name : " + user.getFullName() +"\n\n\n" + "Your session will expire on :" + user.getSessionExpiryDate());
+        welcomeText.setText("Welcome To The 96th Jalsa Salana Bangladesh\n\n\n" + user.getFullName() +"\n\n\n" + "Your session will expire on :" + user.getSessionExpiryDate());
 
         Button logoutBtn = findViewById(R.id.btnLogout);
 
@@ -46,7 +46,7 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 session.logoutUser();
-                Intent i = new Intent(DashboardActivity.this, LoginActivity.class);
+                Intent i = new Intent(DashboardActivity.this, ChoosingActivity.class);
                 startActivity(i);
                 finish();
 

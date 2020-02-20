@@ -36,7 +36,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends BaseActivity {
 
     private static final String TAG = RegisterActivity.class.getSimpleName();
 
@@ -67,7 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
     Bitmap bitmap, decoded;
     int success;
     int PICK_IMAGE_REQUEST = 1;
-    int bitmap_size = 60; // range 1 - 100
+    int bitmap_size = 100; // range 1 - 100
 
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
@@ -151,7 +151,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void loadDashboard() {
         Intent i = new Intent(getApplicationContext(), DashboardActivity.class);
         startActivity(i);
-        finish();
+       // finish();
 
     }
 

@@ -21,7 +21,7 @@ import org.amcbd.jalsa_registration.base_url.BaseUrl;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     private static final String KEY_STATUS = "status";
     private static final String KEY_MESSAGE = "message";
@@ -59,9 +59,8 @@ public class LoginActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent i = new Intent(LoginActivity.this, RegistrationActivity.class);
                 startActivity(i);
-                finish();
             }
         });
 
