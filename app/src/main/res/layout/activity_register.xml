@@ -93,7 +93,7 @@
             android:layout_margin="5dp"
             android:background="@android:color/white"
             android:hint="write image name"
-            android:inputType="textPassword"
+            android:inputType="textCapSentences"
             android:padding="7dp" />
 
     </LinearLayout>

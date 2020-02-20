@@ -265,7 +265,7 @@ public class RegisterActivity extends AppCompatActivity {
                         loading.dismiss();
 
                         //menampilkan toast
-                        Toast.makeText(RegisterActivity.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(RegisterActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
                         Log.e(TAG, error.getMessage().toString());
                     }
                 }) {

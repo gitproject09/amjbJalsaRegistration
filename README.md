@@ -1,4 +1,4 @@
-# [Contacts of Majlish Khuddamul Ahmadiyya, Bangladesh][published url]
+# [Jalsa Salana Bangladesh : Registration App
 ## Developer: [Sopan Ahmed][instructor url]
 
 
