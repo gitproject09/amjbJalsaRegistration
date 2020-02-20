@@ -89,7 +89,6 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
     private EditText etBloodGroup;
     private EditText etOccupation;
     private EditText etJobTitle;
-    private EditText etOther;
 
     private ImageView userIcon;
     private Button btnRegister;
@@ -111,7 +110,6 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
     private String bloodGroup;
     private String occupation;
     private String jobTitle;
-    private String other = "";
 
     private static final int RC_STORAGE_PERMS1 = 101;
     private static final int RC_STORAGE_PERMS2 = 102;
@@ -162,7 +160,9 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_registration);
 
         session = new SessionHandler(getApplicationContext());
@@ -186,7 +186,6 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         etBloodGroup = findViewById(R.id.etBloodGroup);
         etOccupation = findViewById(R.id.etOccupation);
         etJobTitle = findViewById(R.id.etJobTitle);
-        etOther = findViewById(R.id.etOther);
 
 
         userIcon.setOnClickListener(this);
@@ -259,7 +258,6 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         etBloodGroup = findViewById(R.id.etBloodGroup);
         etOccupation = findViewById(R.id.etOccupation);
         etJobTitle = findViewById(R.id.etJobTitle);
-        etOther = findViewById(R.id.etOther);
 
         email = etEmail.getText().toString().trim();
         budget = etBudget.getText().toString().trim();
@@ -267,7 +265,6 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         bloodGroup = etBloodGroup.getText().toString().trim();
         occupation = etOccupation.getText().toString().trim();
         jobTitle = etJobTitle.getText().toString().trim();
-        other = etOther.getText().toString().trim();
 
         if (fullName.length() == 0) {
             etFullName.setError("Required Field");
@@ -761,8 +758,8 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
                 username = fullName;
 
 
-               String mullString = "Name : " +fullName + "\n\nfatherName : "+ fatherName+ "\n\nmotherName : "+ motherName
-                        + "\n\nAge : "+ age+ "\n\nmajlish : "+ majlish+ "\n\ngroup : "+ group + "\n\nmobileNo : "+mobileNo+ "\n\nbloodGroup : "+bloodGroup;
+               String mullString = "Name : " +fullName + "\n\nFather's Name : "+ fatherName+ "\n\nMother's Name : "+ motherName
+                        + "\n\nAge : "+ age+ "\n\nMajlish : "+ majlish+ "\n\nGroup : "+ group + "\n\nMobile Number : "+mobileNo+ "\n\nBlood Group : "+bloodGroup;
 
                detailsString = mullString;
 

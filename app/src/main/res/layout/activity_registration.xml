@@ -34,7 +34,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="8dp"
                         android:hint="Full Name"
                         android:imeOptions="actionNext"
                         android:inputType="text"
@@ -48,7 +48,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:layout_marginTop="3dp"
+                        android:layout_marginTop="4dp"
                         android:hint="Father Name"
                         android:imeOptions="actionNext"
                         android:inputType="text"
@@ -62,7 +62,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:layout_marginTop="3dp"
+                        android:layout_marginTop="4dp"
                         android:hint="Mother Name"
                         android:imeOptions="actionNext"
                         android:inputType="text"
@@ -70,181 +70,193 @@
                         android:nextFocusForward="@+id/etAge"
                         android:textSize="14sp" />
 
-                    <EditText
-                        android:id="@+id/etAge"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="3dp"
-                        android:hint="Age"
-                        android:imeOptions="actionNext"
-                        android:inputType="number"
-                        android:maxLength="2"
-                        android:maxLines="1"
-                        android:nextFocusForward="@+id/etMajlish"
-                        android:textSize="14sp" />
+                        android:layout_marginTop="@dimen/size4">
 
-                    <EditText
-                        android:id="@+id/etMajlish"
+                        <EditText
+                            android:id="@+id/etAge"
+                            android:layout_width="@dimen/size50"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="5dp"
+                            android:hint="Age"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:maxLines="1"
+                            android:nextFocusForward="@+id/etMajlish"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/etMajlish"
+                            android:layout_width="@dimen/size150"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/etAge"
+                            android:layout_marginRight="5dp"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:hint="Majlish"
+                            android:inputType="text"
+                            android:maxLength="20"
+                            android:maxLines="1"
+                            android:textSize="14sp"
+                            android:windowSoftInputMode="stateHidden" />
+
+                        <EditText
+                            android:id="@+id/etGroup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/etMajlish"
+                            android:layout_marginRight="5dp"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:hint="Group : Ansar/Khuddam/Atfal/Lajna"
+                            android:inputType="text"
+                            android:maxLength="20"
+                            android:maxLines="1"
+                            android:textSize="14sp"
+                            android:windowSoftInputMode="stateHidden" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="3dp"
-                        android:editable="false"
-                        android:focusable="false"
-                        android:hint="Majlish"
-                        android:inputType="text"
-                        android:maxLength="20"
-                        android:maxLines="1"
-                        android:textSize="14sp"
-                        android:windowSoftInputMode="stateHidden" />
+                        android:layout_marginTop="@dimen/size4">
 
-                    <EditText
-                        android:id="@+id/etGroup"
+                        <EditText
+                            android:id="@+id/etMobileNo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="5dp"
+                            android:hint="Mobile Number"
+                            android:nextFocusForward="@+id/etEmail"
+                            android:inputType="number"
+                            android:maxLength="11"
+                            android:maxLines="1"
+                            android:textSize="14sp" />
+
+                        <!--android:imeOptions="actionDone"-->
+
+                        <EditText
+                            android:id="@+id/etEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/etMobileNo"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="5dp"
+                            android:hint="Email"
+                            android:imeOptions="actionNext"
+                            android:maxLength="50"
+                            android:maxLines="1"
+                            android:nextFocusForward="@+id/etBudget"
+                            android:textSize="14sp" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="3dp"
-                        android:editable="false"
-                        android:focusable="false"
-                        android:hint="Group : Ansar/Khuddam/Atfal/Lajna"
-                        android:inputType="text"
-                        android:maxLength="20"
-                        android:maxLines="1"
-                        android:textSize="14sp"
-                        android:windowSoftInputMode="stateHidden" />
+                        android:layout_marginTop="@dimen/size4">
 
-                    <EditText
-                        android:id="@+id/etMobileNo"
+                        <EditText
+                            android:id="@+id/etBudget"
+                            android:layout_width="@dimen/size100"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="5dp"
+                            android:hint="Budget"
+                            android:inputType="number"
+                            android:imeOptions="actionNext"
+                            android:maxLength="20"
+                            android:maxLines="1"
+                            android:nextFocusForward="@+id/cvMaritalStatus"
+                            android:textSize="14sp" />
+
+                        <CheckBox
+                            android:id="@+id/cvMaritalStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/etBudget"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Marital Status"
+                            android:nextFocusForward="@+id/etDateOfBayat"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/etDateOfBayat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/cvMaritalStatus"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:hint="Date of Bayat"
+                            android:imeOptions="actionNext"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:maxLength="20"
+                            android:maxLines="1"
+                            android:nextFocusForward="@+id/etBloodGroup"
+                            android:textSize="14sp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="15dp"
-                        android:hint="Mobile Number : 01700112233"
-                        android:nextFocusForward="@+id/etEmail"
-                        android:inputType="number"
-                        android:maxLength="11"
-                        android:maxLines="1"
-                        android:textSize="14sp" />
+                        android:layout_marginBottom="@dimen/size4">
 
-                    <!--android:imeOptions="actionDone"-->
+                        <EditText
+                            android:id="@+id/etBloodGroup"
+                            android:layout_width="@dimen/size100"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="3dp"
+                            android:hint="Blood Group"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:imeOptions="actionNext"
+                            android:maxLength="20"
+                            android:maxLines="1"
+                            android:nextFocusForward="@+id/etOccupation"
+                            android:textSize="14sp" />
 
-                    <EditText
-                        android:id="@+id/etEmail"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="3dp"
-                        android:hint="Email"
-                        android:imeOptions="actionNext"
-                        android:maxLength="50"
-                        android:maxLines="1"
-                        android:nextFocusForward="@+id/etBudget"
-                        android:textSize="14sp" />
+                        <EditText
+                            android:id="@+id/etOccupation"
+                            android:layout_width="@dimen/size120"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/etBloodGroup"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="3dp"
+                            android:hint="Occupation"
+                            android:imeOptions="actionNext"
+                            android:maxLength="20"
+                            android:maxLines="1"
+                            android:nextFocusForward="@+id/etJobTitle"
+                            android:textSize="14sp" />
 
-                    <EditText
-                        android:id="@+id/etBudget"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="3dp"
-                        android:hint="Budget"
-                        android:inputType="number"
-                        android:imeOptions="actionNext"
-                        android:maxLength="20"
-                        android:maxLines="1"
-                        android:nextFocusForward="@+id/cvMaritalStatus"
-                        android:textSize="14sp" />
+                        <EditText
+                            android:id="@+id/etJobTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/etOccupation"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="3dp"
+                            android:hint="Job Title"
+                            android:imeOptions="actionNext"
+                            android:maxLength="20"
+                            android:maxLines="1"
+                            android:nextFocusForward="@+id/etOther"
+                            android:textSize="14sp" />
 
-                    <CheckBox
-                        android:id="@+id/cvMaritalStatus"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="3dp"
-                        android:text="Marital Status"
-                        android:nextFocusForward="@+id/etDateOfBayat"
-                        android:textSize="14sp" />
-
-                    <EditText
-                        android:id="@+id/etDateOfBayat"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="3dp"
-                        android:hint="Date of Bayat"
-                        android:imeOptions="actionNext"
-                        android:editable="false"
-                        android:focusable="false"
-                        android:maxLength="20"
-                        android:maxLines="1"
-                        android:nextFocusForward="@+id/etBloodGroup"
-                        android:textSize="14sp" />
-
-                    <EditText
-                        android:id="@+id/etBloodGroup"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="3dp"
-                        android:hint="Blood Group"
-                        android:editable="false"
-                        android:focusable="false"
-                        android:imeOptions="actionNext"
-                        android:maxLength="20"
-                        android:maxLines="1"
-                        android:nextFocusForward="@+id/etOccupation"
-                        android:textSize="14sp" />
-
-                    <EditText
-                        android:id="@+id/etOccupation"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="3dp"
-                        android:hint="Occupation"
-                        android:imeOptions="actionNext"
-                        android:maxLength="20"
-                        android:maxLines="1"
-                        android:nextFocusForward="@+id/etJobTitle"
-                        android:textSize="14sp" />
-
-                    <EditText
-                        android:id="@+id/etJobTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="3dp"
-                        android:hint="Job Title"
-                        android:imeOptions="actionNext"
-                        android:maxLength="20"
-                        android:maxLines="1"
-                        android:nextFocusForward="@+id/etOther"
-                        android:textSize="14sp" />
-
-                    <EditText
-                        android:id="@+id/etOther"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="3dp"
-                        android:hint="Other"
-                        android:imeOptions="actionDone"
-                        android:maxLength="20"
-                        android:maxLines="1"
-                        android:textSize="14sp" />
+                    </RelativeLayout>
 
                     <TextView
                         android:id="@+id/textViewFail"
@@ -259,8 +271,8 @@
 
                     <ImageView
                         android:id="@+id/userIcon"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
                         android:layout_gravity="center"
                         android:adjustViewBounds="true"
                         android:scaleType="fitXY"
