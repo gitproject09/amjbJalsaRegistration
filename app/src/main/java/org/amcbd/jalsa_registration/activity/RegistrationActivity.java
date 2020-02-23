@@ -85,10 +85,10 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
     private EditText etEmail;
     private EditText etBudget;
     private CheckBox cvMaritalStatus;
+    private CheckBox cvAhmadiByBirth;
     private EditText etDateOfBayat;
     private EditText etBloodGroup;
     private EditText etOccupation;
-    private EditText etJobTitle;
 
     private ImageView userIcon;
     private Button btnRegister;
@@ -106,6 +106,7 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
     private String email = "";
     private String budget = "";
     private int maritalStatus = 0;
+    private int ahmadiByBirthStatus = 0;
     private String dateOfBayat = "";
     private String bloodGroup;
     private String occupation;
@@ -119,7 +120,6 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
 
     private int hasWriteExtStorePMS;
     private TextView mTextView;
-    public static final String BASE_URL = "https://firebasestorage.googleapis.com/v0/b/amjb-1da8e.appspot.com/o/";
     private String[] majlishList;
     private String[] groupList;
     private String[] bloodGroupList;
@@ -137,6 +137,25 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
     private static final String KEY_FULL_NAME = "full_name";
     private static final String KEY_USERNAME = "username";
     private static final String KEY_PASSWORD = "password";
+
+    private static final String KEY_NAME = "name";
+    private static final String KEY_FATHER_NAME = "father_name";
+    private static final String KEY_MOTHER_NAME = "mother_name";
+    private static final String KEY_MOB = "mob";
+    private static final String KEY_EMAIL = "email";
+    private static final String KEY_DOB = "DOB";
+    private static final String KEY_JAMAT = "jamat";
+    private static final String KEY_GENDER = "gender";
+    private static final String KEY_MAJLIS = "majlis";
+    private static final String KEY_BY_BIRTHAHMADI = "by_birth_ahmadi";
+    private static final String KEY_BUDGET = "budget";
+    private static final String KEY_BLOOD_GROUP = "blood_group";
+    private static final String KEY_MARITAL_STATUS = "maritial_status";
+    private static final String KEY_OCCUPATION = "occupation";
+    private static final String KEY_PROFILE_IMG = "profile_img";
+
+    private String KEY_IMAGE = "image";
+
     private static final String KEY_EMPTY = "";
 
     private String username;
@@ -152,9 +171,6 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
 
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
-
-    private String KEY_IMAGE = "image";
-    private String KEY_NAME = "name";
 
     String tag_json_obj = "register_upload";
 
@@ -182,10 +198,10 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         etEmail = findViewById(R.id.etEmail);
         etBudget = findViewById(R.id.etBudget);
         cvMaritalStatus = findViewById(R.id.cvMaritalStatus);
+        cvAhmadiByBirth = findViewById(R.id.cvAhmadiByBirth);
         etDateOfBayat = findViewById(R.id.etDateOfBayat);
         etBloodGroup = findViewById(R.id.etBloodGroup);
         etOccupation = findViewById(R.id.etOccupation);
-        etJobTitle = findViewById(R.id.etJobTitle);
 
 
         userIcon.setOnClickListener(this);
@@ -195,6 +211,7 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         etDateOfBayat.setOnClickListener(this);
         etBloodGroup.setOnClickListener(this);
         cvMaritalStatus.setOnCheckedChangeListener(this);
+        cvAhmadiByBirth.setOnCheckedChangeListener(this);
 
         majlishList = getResources().getStringArray(R.array.majlish_list);
         groupList = getResources().getStringArray(R.array.group_list);
@@ -257,14 +274,13 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         etDateOfBayat = findViewById(R.id.etDateOfBayat);
         etBloodGroup = findViewById(R.id.etBloodGroup);
         etOccupation = findViewById(R.id.etOccupation);
-        etJobTitle = findViewById(R.id.etJobTitle);
 
         email = etEmail.getText().toString().trim();
         budget = etBudget.getText().toString().trim();
         dateOfBayat = etDateOfBayat.getText().toString().trim();
         bloodGroup = etBloodGroup.getText().toString().trim();
         occupation = etOccupation.getText().toString().trim();
-        jobTitle = etJobTitle.getText().toString().trim();
+
 
         if (fullName.length() == 0) {
             etFullName.setError("Required Field");
@@ -311,10 +327,7 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
             etOccupation.setError("Required Field");
             isValidate = false;
         }
-        if (jobTitle.length() == 0) {
-            etJobTitle.setError("Required Field");
-            isValidate = false;
-        }
+
 
        /* if (imageLink.equals("")) {
             mTextView.setText("Please upload image");
@@ -511,11 +524,27 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked) {
-            maritalStatus = 1;
-        } else {
-            maritalStatus = 0;
+
+        switch (buttonView.getId()) {
+            case R.id.cvMaritalStatus:
+
+                if (isChecked) {
+                    maritalStatus = 1;
+                } else {
+                    maritalStatus = 0;
+                }
+                break;
+
+            case R.id.cvAhmadiByBirth:
+
+                if (isChecked) {
+                    ahmadiByBirthStatus = 1;
+                } else {
+                    ahmadiByBirthStatus = 0;
+                }
+                break;
         }
+
     }
 
     public void OnDatePickerClicked() {
@@ -717,7 +746,10 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
                             if (success == 1) {
                                 Log.e("Response: JSONobject", jObj.toString());
 
-                                session.loginUser(username, detailsString, jObj.getString("imagePath"));
+                               // session.loginUser(username, detailsString, jObj.getString("imagePath"));
+
+                                session.loginUser(username, fullName, fatherName, motherName, mobileNo, email, age, majlish, "male", majlish,
+                                        ""+ahmadiByBirthStatus, budget, bloodGroup, ""+maritalStatus, occupation, jObj.getString("imagePath"));
                                 loadDashboard();
 
                                 Toast.makeText(RegistrationActivity.this, jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
@@ -758,16 +790,30 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
                 username = fullName;
 
 
-               String mullString = "Name : " +fullName + "\n\nFather's Name : "+ fatherName+ "\n\nMother's Name : "+ motherName
-                        + "\n\nAge : "+ age+ "\n\nMajlish : "+ majlish+ "\n\nGroup : "+ group + "\n\nMobile Number : "+mobileNo+ "\n\nBlood Group : "+bloodGroup;
+               /*String mullString = "Name : " +fullName + "\n\nFather's Name : "+ fatherName+ "\n\nMother's Name : "+ motherName
+                        + "\n\nAge : "+ age+ "\n\nMajlish : "+ majlish+ "\n\nGroup : "+ group + "\n\nMobile Number : "+mobileNo+ "\n\nBlood Group : "+bloodGroup;*/
 
-               detailsString = mullString;
+              // detailsString = mullString;
+
 
                 params.put(KEY_USERNAME, username);
-                params.put(KEY_FULL_NAME, mullString);
+                params.put(KEY_NAME, fullName);
+                params.put(KEY_FATHER_NAME, fatherName);
+                params.put(KEY_MOTHER_NAME, motherName);
+                params.put(KEY_MOB, mobileNo);
+                params.put(KEY_EMAIL, email);
+                params.put(KEY_DOB, dateOfBayat);
+                params.put(KEY_JAMAT, majlish);
+                params.put(KEY_GENDER, group);
+                params.put(KEY_MAJLIS, majlish);
+                params.put(KEY_BY_BIRTHAHMADI, "ahmadi : "+ahmadiByBirthStatus);
+                params.put(KEY_BUDGET, budget);
+                params.put(KEY_BLOOD_GROUP, bloodGroup);
+                params.put(KEY_MARITAL_STATUS, "Married : "+maritalStatus);
+                params.put(KEY_OCCUPATION, occupation);
+                params.put(KEY_PROFILE_IMG, getStringImage(decoded));
+
                 params.put(KEY_PASSWORD, "admin");
-                params.put(KEY_IMAGE, getStringImage(decoded));
-                params.put(KEY_NAME, majlish);
 
                 //kembali ke parameters
                 Log.e(TAG, "Parameters : " + params);

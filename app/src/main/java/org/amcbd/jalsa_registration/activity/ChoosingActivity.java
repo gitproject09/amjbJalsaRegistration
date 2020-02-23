@@ -16,6 +16,8 @@ public class ChoosingActivity extends BaseActivity implements View.OnClickListen
 
         findViewById(R.id.btnRegister).setOnClickListener(this);
         findViewById(R.id.btnLogin).setOnClickListener(this);
+        findViewById(R.id.btnSearhMember).setOnClickListener(this);
+        findViewById(R.id.btnWebViewReg).setOnClickListener(this);
 
     }
 
@@ -37,6 +39,22 @@ public class ChoosingActivity extends BaseActivity implements View.OnClickListen
                 } else {
                     Toast.makeText(getApplicationContext(), "No internet Connection!!!", Toast.LENGTH_SHORT).show();
                 }*/
+                break;
+
+            case R.id.btnSearhMember:
+                Intent searchIntent = new Intent(ChoosingActivity.this, EditMemberActivity.class);
+                startActivity(searchIntent);
+                break;
+
+            case R.id.btnWebViewReg:
+
+                if (isNetworkAvailable()) {
+                    Intent webIntent = new Intent(ChoosingActivity.this, AboutUsActivity.class);
+                    startActivity(webIntent);
+                } else {
+                    Toast.makeText(getApplicationContext(), "No internet Connection!!!", Toast.LENGTH_SHORT).show();
+                }
+
                 break;
 
 

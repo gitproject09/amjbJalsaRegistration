@@ -79,44 +79,48 @@
                             android:id="@+id/etAge"
                             android:layout_width="@dimen/size50"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="5dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="5dp"
                             android:hint="Age"
                             android:imeOptions="actionNext"
                             android:inputType="number"
                             android:maxLength="2"
                             android:maxLines="1"
-                            android:nextFocusForward="@+id/etMajlish"
+                            android:nextFocusForward="@+id/etGroup"
                             android:textSize="14sp" />
 
                         <EditText
-                            android:id="@+id/etMajlish"
-                            android:layout_width="@dimen/size150"
+                            android:id="@+id/etGroup"
+                            android:layout_width="@dimen/size190"
                             android:layout_height="wrap_content"
                             android:layout_toEndOf="@id/etAge"
                             android:layout_marginRight="5dp"
+                            android:layout_marginStart="5dp"
                             android:editable="false"
                             android:focusable="false"
-                            android:hint="Majlish"
+                            android:hint="Group : Ansar/Khuddam/Lajna"
                             android:inputType="text"
                             android:maxLength="20"
                             android:maxLines="1"
                             android:textSize="14sp"
+                            android:nextFocusForward="@+id/etMajlish"
                             android:windowSoftInputMode="stateHidden" />
 
                         <EditText
-                            android:id="@+id/etGroup"
+                            android:id="@+id/etMajlish"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/etMajlish"
+                            android:layout_toEndOf="@id/etGroup"
                             android:layout_marginRight="5dp"
+                            android:layout_marginStart="5dp"
                             android:editable="false"
                             android:focusable="false"
-                            android:hint="Group : Ansar/Khuddam/Atfal/Lajna"
+                            android:hint="Jamat"
                             android:inputType="text"
                             android:maxLength="20"
                             android:maxLines="1"
                             android:textSize="14sp"
+                            android:nextFocusForward="@+id/etMobileNo"
                             android:windowSoftInputMode="stateHidden" />
 
                     </RelativeLayout>
@@ -165,26 +169,26 @@
 
                         <EditText
                             android:id="@+id/etBudget"
-                            android:layout_width="@dimen/size100"
+                            android:layout_width="@dimen/size80"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="5dp"
                             android:hint="Budget"
                             android:inputType="number"
                             android:imeOptions="actionNext"
-                            android:maxLength="20"
+                            android:maxLength="10"
                             android:maxLines="1"
-                            android:nextFocusForward="@+id/cvMaritalStatus"
+                            android:nextFocusForward="@+id/cvAhmadiByBirth"
                             android:textSize="14sp" />
 
                         <CheckBox
-                            android:id="@+id/cvMaritalStatus"
+                            android:id="@+id/cvAhmadiByBirth"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_toEndOf="@id/etBudget"
                             android:layout_marginRight="5dp"
                             android:layout_marginTop="5dp"
-                            android:text="Marital Status"
+                            android:text="Ahmadi By Birth"
                             android:nextFocusForward="@+id/etDateOfBayat"
                             android:textSize="14sp" />
 
@@ -192,7 +196,7 @@
                             android:id="@+id/etDateOfBayat"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@+id/cvMaritalStatus"
+                            android:layout_toEndOf="@+id/cvAhmadiByBirth"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:hint="Date of Bayat"
@@ -229,7 +233,7 @@
 
                         <EditText
                             android:id="@+id/etOccupation"
-                            android:layout_width="@dimen/size120"
+                            android:layout_width="@dimen/size130"
                             android:layout_height="wrap_content"
                             android:layout_toEndOf="@id/etBloodGroup"
                             android:layout_marginRight="5dp"
@@ -238,23 +242,20 @@
                             android:imeOptions="actionNext"
                             android:maxLength="20"
                             android:maxLines="1"
-                            android:nextFocusForward="@+id/etJobTitle"
+                            android:nextFocusForward="@+id/cvMaritalStatus"
                             android:textSize="14sp" />
 
-                        <EditText
-                            android:id="@+id/etJobTitle"
-                            android:layout_width="match_parent"
+                        <CheckBox
+                            android:id="@+id/cvMaritalStatus"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@+id/etOccupation"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="3dp"
-                            android:hint="Job Title"
-                            android:imeOptions="actionNext"
-                            android:maxLength="20"
-                            android:maxLines="1"
-                            android:nextFocusForward="@+id/etOther"
+                            android:layout_toEndOf="@id/etOccupation"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Marital Status"
+                            android:nextFocusForward="@+id/etDateOfBayat"
                             android:textSize="14sp" />
+
 
                     </RelativeLayout>
 

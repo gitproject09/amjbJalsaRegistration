@@ -3,6 +3,7 @@ package org.amcbd.jalsa_registration.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,9 +28,16 @@ public class DashboardActivity extends BaseActivity {
         User user = session.getUserDetails();
         TextView welcomeText = findViewById(R.id.welcomeText);
         ImageView ivProfileImage = findViewById(R.id.ivProfileImage);
+        String urlPath = user.getProfile_img();
+
+        String replaceUrl = urlPath.replace("\\", "");
+
+        String fullUrl = BaseUrl.baseUrl + "upload_image/" + replaceUrl;
+        Log.d(DashboardActivity.class.getSimpleName(), "fullUrl : " + fullUrl);
+
 
         Picasso.get()
-                .load(BaseUrl.baseUrl + "upload_image/" + user.getImagePath())
+                .load(BaseUrl.baseUrl + "upload_image/" + replaceUrl)
                 // .memoryPolicy(MemoryPolicy.NO_CACHE)
                 // .networkPolicy(NetworkPolicy.NO_CACHE)
                 .placeholder(R.drawable.ic_launcher_background)
@@ -38,7 +46,15 @@ public class DashboardActivity extends BaseActivity {
                 .noFade()
                 .into(ivProfileImage);
 
-        welcomeText.setText("Welcome To The 96th Jalsa Salana Bangladesh\n\n\n" + user.getFullName() +"\n\n\n" + "Your session will expire on :" + user.getSessionExpiryDate());
+        welcomeText.setText("Welcome To The 96th Jalsa Salana Bangladesh\n\n\n"
+                + "\n\nName :  " + user.getName()
+                + "\n\nFather Name :  " + user.getFather_name()
+                + "\n\nMother Name :  " + user.getMother_name()
+                + "\n\nMobile No :  " + user.getMob()
+                + "\n\nJamat/Majlish :  " + user.getJamat()
+                + "\n\nGroup :  " + user.getGender()
+                + "\n\nBlood Group :  " + user.getBlood_group()
+                + "\n\n\n" + "Your session will expire on :" + user.getSessionExpiryDate());
 
         Button logoutBtn = findViewById(R.id.btnLogout);
 

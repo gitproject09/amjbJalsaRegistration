@@ -1,0 +1,31 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_header"
+    android:layout_width="match_parent"
+    android:layout_height="?actionBarSize">
+
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:paddingBottom="@dimen/size10"
+        android:paddingEnd="@dimen/size5"
+        android:paddingStart="@dimen/size15"
+        android:paddingTop="@dimen/size10"
+        android:src="@android:drawable/ic_input_delete" />
+
+    <TextView
+        android:id="@+id/header_toolbar_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/ivBack"
+        android:ems="2"
+        android:paddingEnd="@dimen/size2"
+        android:paddingStart="@dimen/size2"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/textSize16" />
+
+</RelativeLayout>

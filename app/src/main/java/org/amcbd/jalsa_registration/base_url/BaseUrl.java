@@ -4,4 +4,5 @@ public class BaseUrl {
 
     //public static final String baseUrl = "http://192.168.36.151:8080/member/";
     public static final String baseUrl = "https://jalsasalanabd.000webhostapp.com/jalsa/";
+    public static final String regUrl = "http://amcbd.org/jalsa_registration_app/";
 }

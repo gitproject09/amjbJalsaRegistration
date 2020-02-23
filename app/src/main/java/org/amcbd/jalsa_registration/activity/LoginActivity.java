@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -120,7 +121,12 @@ public class LoginActivity extends BaseActivity {
                             //Check if user got logged in successfully
 
                             if (response.getInt(KEY_STATUS) == 0) {
-                                session.loginUser(username, response.getString(KEY_FULL_NAME), response.getString(KEY_PROFILE_IMAGE));
+                                Log.d("Login Response ", response.toString());
+                               // session.loginUser(username, response.getString(KEY_FULL_NAME), response.getString(KEY_PROFILE_IMAGE));
+
+                                session.loginUser(username, response.getString("name"), response.getString("father_name"), response.getString("mother_name"), response.getString("mob"),
+                                        "", "", response.getString("jamat"), response.getString("gender"), "",
+                                        "", "", response.getString("blood_group"), "", "", response.getString("profile_img"));
                                 loadDashboard();
 
                             } else {

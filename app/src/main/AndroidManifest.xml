@@ -61,6 +61,13 @@
         <activity
             android:name=".crop.UCropActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.EditMemberActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.AboutUsActivity"
+            android:screenOrientation="portrait" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
