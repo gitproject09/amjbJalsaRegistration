@@ -2,11 +2,14 @@ package org.amcbd.jalsa_registration.activity;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,22 +19,31 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 
 import org.amcbd.jalsa_registration.R;
+import org.amcbd.jalsa_registration.adapter.MemberListAdapter;
 import org.amcbd.jalsa_registration.app.AppController;
 import org.amcbd.jalsa_registration.base_url.BaseUrl;
 import org.amcbd.jalsa_registration.crop.ImagePickerActivity;
 import org.amcbd.jalsa_registration.helper.Helper;
 import org.amcbd.jalsa_registration.interfaces.DialogClickListener;
+import org.amcbd.jalsa_registration.interfaces.MemberClickListener;
+import org.amcbd.jalsa_registration.model.SessionHandler;
+import org.amcbd.jalsa_registration.model.User;
+import org.amcbd.jalsa_registration.pojo.MemberListData;
 import org.amcbd.jalsa_registration.utils.DialogChooser;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class EditMemberActivity extends BaseActivity implements View.OnClickListener{
+public class EditMemberActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = EditMemberActivity.class.getSimpleName();
 
@@ -45,6 +57,7 @@ public class EditMemberActivity extends BaseActivity implements View.OnClickList
     private EditText etEmail;
     private Button btnSearhMember;
 
+    private SessionHandler session;
 
     private String fullName = "";
     private String userId = "";
@@ -71,6 +84,11 @@ public class EditMemberActivity extends BaseActivity implements View.OnClickList
 
     String tag_json_obj = "search_member";
 
+    private Context mContext;
+    private List<MemberListData> memberList;
+    private MemberListAdapter adapter;
+    private RecyclerView recyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -85,7 +103,52 @@ public class EditMemberActivity extends BaseActivity implements View.OnClickList
         etMobileNo = findViewById(R.id.etMobileNo);
         etEmail = findViewById(R.id.etEmail);
         btnSearhMember = findViewById(R.id.btnSearhMember);
+        recyclerView = findViewById(R.id.recyclerView);
         btnSearhMember.setOnClickListener(this::onClick);
+
+        session = new SessionHandler(getApplicationContext());
+
+        mContext = this;
+
+        recyclerView.setHasFixedSize(true);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        memberList = new ArrayList<>();
+
+        adapter = new MemberListAdapter(this, memberList, new MemberClickListener() {
+
+            @Override
+            public void onYesClick(View view, int position) {
+
+                session.loginUser(memberList.get(position).getUser_id(), memberList.get(position).getName(), memberList.get(position).getFather_name(),
+                        memberList.get(position).getMother_name(), memberList.get(position).getMob(),
+                        "", "", memberList.get(position).getJamat(), "", "",
+                        "", "", memberList.get(position).getBlood_group(), "", "", memberList.get(position).getProfile_img());
+
+                loadDashboard();
+
+            }
+
+            @Override
+            public void onNoClick(View view, int position) {
+
+                showAlertDialog("Print Option Coming soon!!!");
+
+            }
+
+            @Override
+            public void onCrossClick(View view, int position) {
+
+            }
+        });
+
+        recyclerView.setAdapter(adapter);
+        /*if (isNetworkAvailable()) {
+            presenter.doFriendListRequest();
+        } else {
+            showSnakeBarMessage(getResources().getString(R.string.message_online));
+        }*/
 
         ImagePickerActivity.clearCache(this);
     }
@@ -96,6 +159,15 @@ public class EditMemberActivity extends BaseActivity implements View.OnClickList
         Helper.dismissProgressDialog();
         Helper.dismissDialog();
     }
+
+    /**
+     * Launch Dashboard Activity on Successful Login
+     */
+    private void loadDashboard() {
+        Intent i = new Intent(getApplicationContext(), DashboardActivity.class);
+        startActivity(i);
+    }
+
 
     @Override
     public void onClick(View v) {
@@ -111,7 +183,8 @@ public class EditMemberActivity extends BaseActivity implements View.OnClickList
                     mobileNo = etMobileNo.getText().toString().trim();
                     email = etEmail.getText().toString().trim();
 
-                    searchMember();
+                    //searchMember();
+                    searchMemberInThisWay();
 
                 } else {
                     showNetworkError();
@@ -156,7 +229,7 @@ public class EditMemberActivity extends BaseActivity implements View.OnClickList
     }
 
 
-    public void showDuplicateAlertDialog(String message) {
+    public void showAlertDialog(String message) {
 
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle(getString(R.string.app_name));
@@ -245,6 +318,100 @@ public class EditMemberActivity extends BaseActivity implements View.OnClickList
         };
 
         AppController.getInstance().addToRequestQueue(stringRequest, tag_json_obj);
+    }
+
+    private void searchMemberInThisWay() {
+        final ProgressDialog searching = ProgressDialog.show(this, "Searching...", "Please wait...", false, false);
+        JSONObject request = new JSONObject();
+        try {
+            //Populate the request parameters
+            request.put(KEY_ID, userId);
+            request.put(KEY_NAME, fullName);
+            request.put(KEY_FATHER_NAME, fatherName);
+            request.put(KEY_MOTHER_NAME, motherName);
+            request.put(KEY_MOB, mobileNo);
+            request.put(KEY_EMAIL, email);
+
+            Log.d(TAG, "Request parameters : " + request.toString());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest jsArrayRequest = new JsonObjectRequest
+                (Request.Method.POST, searchUrl, request, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        Log.d("Search Response : ", response.toString());
+                        searching.dismiss();
+
+                        try {
+                            success = response.getInt(TAG_SUCCESS);
+
+                            if (success == 1) {
+
+                                JSONArray jsonarray = response.getJSONArray("members");
+
+                                if (jsonarray.length() > 0) {
+                                    Toast.makeText(EditMemberActivity.this, response.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
+                                    memberList.clear();
+                                    for (int i = 0; i < jsonarray.length(); i++) {
+                                        JSONObject jsonobject = jsonarray.getJSONObject(i);
+                                        MemberListData memberListData = new MemberListData();
+                                        // String name = jsonobject.getString("name");
+                                        memberListData.setUser_id(jsonobject.getString("user_id"));
+                                        memberListData.setName(jsonobject.getString("name"));
+                                        memberListData.setFather_name(jsonobject.getString("father_name"));
+                                        memberListData.setMother_name(jsonobject.getString("mother_name"));
+                                        memberListData.setMob(jsonobject.getString("mob"));
+                                        memberListData.setJamat(jsonobject.getString("jamat"));
+                                        memberListData.setBlood_group(jsonobject.getString("blood_group"));
+                                        memberListData.setProfile_img(jsonobject.getString("profile_img"));
+                                        memberList.add(memberListData);
+                                    }
+
+                                    // memberList.addAll(itemList);
+                                    adapter.setFriendList(memberList);
+
+                                } else {
+                                    Toast.makeText(EditMemberActivity.this, "No Member Found", Toast.LENGTH_LONG).show();
+                                }
+
+                            } else if (success == 3) {
+                                //Display error message if username is already existsing
+                                etFullName.setError("Missing Mandatory Parameters!!!");
+                                etFullName.requestFocus();
+
+                            } else if (success == 0) {
+                                //Display error message if username is already existsing
+                                etFullName.setError("No Member Found");
+                                etFullName.requestFocus();
+
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Error Occurred", Toast.LENGTH_SHORT).show();
+
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        searching.dismiss();
+
+                        //Display error message whenever an error occurs
+                        Toast.makeText(getApplicationContext(),
+                                error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+        // Access the RequestQueue through your singleton class.
+        // MySingleton.getInstance(this).addToRequestQueue(jsArrayRequest);
+        AppController.getInstance().addToRequestQueue(jsArrayRequest, "search_req");
     }
 
     /**

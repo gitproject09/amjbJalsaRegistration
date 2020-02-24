@@ -1,15 +1,20 @@
 package org.amcbd.jalsa_registration.helper;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.squareup.picasso.Picasso;
+
 import org.amcbd.jalsa_registration.R;
+import org.amcbd.jalsa_registration.design.CropCircleTransformation;
 
 public class Helper {
 	private static Dialog mDialog;
@@ -57,5 +62,17 @@ public class Helper {
 		if (mProgressDialog != null && mProgressDialog.isShowing()) {
 			mProgressDialog.dismiss();
 		}
+	}
+
+	public static void loadImageWithCropTransform(String url, int placeHolderImage, int errorImage, ImageView targetImage) {
+		Picasso.get()
+				.load(url)
+				.transform(new CropCircleTransformation())
+				.placeholder(placeHolderImage)
+				.error(errorImage)
+				.fit()
+				.noFade()
+				.into(targetImage);
+
 	}
 }

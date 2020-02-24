@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:layout_marginBottom="@dimen/size2"
+    android:layout_marginLeft="@dimen/size5"
+    android:layout_marginRight="@dimen/size5"
+    android:layout_marginTop="@dimen/size2"
+    android:padding="@dimen/size5">
+
+    <RelativeLayout
+        android:id="@+id/rl_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+
+         <ImageView
+             android:id="@+id/ivProfileImage"
+             android:layout_width="@dimen/size70"
+             android:layout_height="@dimen/size70"
+             android:layout_centerVertical="true"
+             android:src="@drawable/mkab_logo" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/size5"
+        android:layout_marginRight="@dimen/size2"
+        android:layout_toLeftOf="@+id/tvPrint"
+        android:layout_toRightOf="@+id/rl_left">
+
+        <TextView
+            android:id="@+id/tvFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size2"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Sopan Ahmed"
+            android:textSize="@dimen/textSize14" />
+
+        <TextView
+            android:id="@+id/tvFatherName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvFullName"
+            android:ellipsize="end"
+            android:layout_marginTop="@dimen/size2"
+            android:maxLines="1"
+            android:text="Abdul Haque mulla"
+            android:textSize="@dimen/textSize12" />
+
+        <TextView
+            android:id="@+id/tvMotherName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvFatherName"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_marginTop="@dimen/size2"
+            android:text="Mahmuda Begum"
+            android:textSize="@dimen/textSize12" />
+
+        <TextView
+            android:id="@+id/tvMobileNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvMotherName"
+            android:ellipsize="end"
+            android:layout_marginTop="@dimen/size2"
+            android:maxLines="1"
+            android:text="01700 768034"
+            android:textSize="@dimen/textSize12" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvPrint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/color_white"
+        android:layout_marginRight="@dimen/size5"
+        android:padding="@dimen/size5"
+        android:text="Print"
+        android:textSize="@dimen/textSize12" />
+
+</RelativeLayout>
