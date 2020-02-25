@@ -8,6 +8,7 @@ import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -16,6 +17,24 @@ import org.amcbd.jalsa_registration.R;
 public class BaseActivity extends AppCompatActivity {
 
     private ProgressDialog mProgressDialog = null;
+
+    /**
+     * Initialization Toolbar
+     *
+     * @param title
+     * @param showHomeButton
+     */
+    public void initializeToolbar(String title, boolean showHomeButton) {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(title);
+            if (showHomeButton) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setHomeButtonEnabled(true);
+            }
+        }
+    }
 
     public void showProgressDialog() {
         if (mProgressDialog == null) {

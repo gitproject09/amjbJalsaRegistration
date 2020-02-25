@@ -1,23 +1,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rl_header"
     android:layout_width="match_parent"
+    android:background="@color/colorPrimaryDark"
     android:layout_height="?actionBarSize">
 
     <ImageView
         android:id="@+id/ivBack"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="?actionBarSize"
         android:layout_alignParentStart="true"
-        android:paddingBottom="@dimen/size10"
         android:paddingEnd="@dimen/size5"
+        android:layout_centerVertical="true"
         android:paddingStart="@dimen/size15"
-        android:paddingTop="@dimen/size10"
-        android:src="@android:drawable/ic_input_delete" />
+        android:src="@drawable/ic_back_button" />
 
     <TextView
         android:id="@+id/header_toolbar_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/ivRight"
         android:layout_centerInParent="true"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/ivBack"
@@ -25,7 +26,19 @@
         android:paddingEnd="@dimen/size2"
         android:paddingStart="@dimen/size2"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@android:color/white"
         android:textSize="@dimen/textSize16" />
+
+
+    <ImageView
+        android:id="@+id/ivRight"
+        android:layout_width="wrap_content"
+        android:layout_height="?actionBarSize"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="@dimen/size5"
+        android:layout_centerVertical="true"
+        android:paddingStart="@dimen/size15"
+        android:visibility="invisible"
+        android:src="@drawable/ic_back_button" />
 
 </RelativeLayout>

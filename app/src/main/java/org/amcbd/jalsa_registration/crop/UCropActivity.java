@@ -128,6 +128,11 @@ public class UCropActivity extends BaseActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(com.yalantis.ucrop.R.menu.ucrop_menu_activity, menu);
 
@@ -303,8 +308,10 @@ public class UCropActivity extends BaseActivity {
             wrapper.setBackgroundColor(mRootViewBackgroundColor);
             LayoutInflater.from(this).inflate(R.layout.ucrop_controls, wrapper, true);
 
-            mControlsTransition = new AutoTransition();
-            mControlsTransition.setDuration(CONTROLS_ANIMATION_DURATION);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                mControlsTransition = new AutoTransition();
+                mControlsTransition.setDuration(CONTROLS_ANIMATION_DURATION);
+            }
 
             mWrapperStateAspectRatio = findViewById(R.id.state_aspect_ratio);
             mWrapperStateAspectRatio.setOnClickListener(mStateClickListener);
@@ -328,6 +335,7 @@ public class UCropActivity extends BaseActivity {
      * Configures and styles both status bar and toolbar.
      */
     private void setupAppBar() {
+
         setStatusBarColor(mStatusBarColor);
 
         final Toolbar toolbar = findViewById(R.id.toolbar);
@@ -345,7 +353,7 @@ public class UCropActivity extends BaseActivity {
         stateButtonDrawable.setColorFilter(mToolbarWidgetColor, PorterDuff.Mode.SRC_ATOP);
         toolbar.setNavigationIcon(stateButtonDrawable);
 
-        //setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayShowTitleEnabled(false);

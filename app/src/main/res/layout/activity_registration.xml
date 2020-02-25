@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".activity.RegistrationActivity">
+
+    <include
+        android:id="@+id/header_toolbar"
+        layout="@layout/include_header_toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/header_toolbar"
         android:orientation="vertical"
         android:weightSum="4"> <!-- to show what the parent is -->
 

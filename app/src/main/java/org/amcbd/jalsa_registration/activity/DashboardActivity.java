@@ -19,11 +19,29 @@ import org.amcbd.jalsa_registration.model.User;
 public class DashboardActivity extends BaseActivity {
 
     private SessionHandler session;
+    private TextView tvToolbarTitle;
+    private ImageView ivBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+
+        initializeToolbar("", true);
+
+        tvToolbarTitle = findViewById(R.id.header_toolbar_title);
+        tvToolbarTitle.setText("Details Information");
+        ivBack = findViewById(R.id.ivBack);
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+
         session = new SessionHandler(getApplicationContext());
         User user = session.getUserDetails();
         TextView welcomeText = findViewById(R.id.welcomeText);
@@ -68,5 +86,10 @@ public class DashboardActivity extends BaseActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

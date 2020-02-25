@@ -8,6 +8,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -40,6 +44,9 @@ public class LoginActivity extends BaseActivity {
     private String login_url = BaseUrl.baseUrl + "login.php";
     private SessionHandler session;
 
+    private TextView tvToolbarTitle;
+    private ImageView ivBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +56,19 @@ public class LoginActivity extends BaseActivity {
             loadDashboard();
         }
         setContentView(R.layout.activity_login);
+
+        initializeToolbar("", true);
+
+        tvToolbarTitle = findViewById(R.id.header_toolbar_title);
+        tvToolbarTitle.setText("Login");
+        ivBack = findViewById(R.id.ivBack);
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         etUsername = findViewById(R.id.etLoginUsername);
         etPassword = findViewById(R.id.etLoginPassword);
@@ -76,6 +96,11 @@ public class LoginActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     /**

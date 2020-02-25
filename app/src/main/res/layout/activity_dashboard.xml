@@ -1,38 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp"
-    android:layout_centerVertical="true"
-    tools:context=".activity.DashboardActivity">
+    tools:context=".activity.ChoosingActivity">
 
-    <TextView
-        android:id="@+id/welcomeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="10dp" />
+    <include
+        android:id="@+id/header_toolbar"
+        layout="@layout/include_header_toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
 
-    <ImageView
-        android:id="@+id/ivProfileImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_launcher_background"
-        android:padding="1dp" />
-
-    <Button
-        android:id="@+id/btnLogout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginTop="20dp"
-        android:background="#aaa"
-        android:text="@string/logout"
-        android:textColor="@android:color/white" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header_toolbar"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_centerVertical="true"
+        tools:context=".activity.DashboardActivity">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/welcomeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10dp" />
+
+        <ImageView
+            android:id="@+id/ivProfileImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_launcher_background"
+            android:padding="1dp" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="20dp"
+            android:background="#aaa"
+            android:text="@string/logout"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+</RelativeLayout>

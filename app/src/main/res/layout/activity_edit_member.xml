@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".activity.EditMemberActivity">
+
+    <include
+        android:id="@+id/header_toolbar"
+        layout="@layout/include_header_toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:id="@+id/llSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/header_toolbar"
         android:focusableInTouchMode="true"
         android:orientation="vertical">
 
@@ -20,7 +29,7 @@
                 android:layout_width="@dimen/size100"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="5dp"
                 android:hint="Registration id"
                 android:imeOptions="actionNext"
                 android:inputType="number"
@@ -33,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_toEndOf="@id/etId"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="5dp"
                 android:hint="Full Name"
                 android:imeOptions="actionNext"
                 android:inputType="text"
@@ -45,7 +54,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size4">
+            android:layout_marginTop="@dimen/size3">
 
             <EditText
                 android:id="@+id/etFatherName"
@@ -80,7 +89,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size4">
+            android:layout_marginTop="@dimen/size3">
 
             <EditText
                 android:id="@+id/etMobileNo"
@@ -120,7 +129,7 @@
             android:text="Search"
             android:textAllCaps="false"
             android:textColor="@android:color/black"
-            android:textSize="14sp" />
+            android:textSize="@dimen/textSize16" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"

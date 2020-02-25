@@ -10,10 +10,13 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -31,7 +34,6 @@ import org.amcbd.jalsa_registration.helper.Helper;
 import org.amcbd.jalsa_registration.interfaces.DialogClickListener;
 import org.amcbd.jalsa_registration.interfaces.MemberClickListener;
 import org.amcbd.jalsa_registration.model.SessionHandler;
-import org.amcbd.jalsa_registration.model.User;
 import org.amcbd.jalsa_registration.pojo.MemberListData;
 import org.amcbd.jalsa_registration.utils.DialogChooser;
 import org.json.JSONArray;
@@ -46,6 +48,9 @@ import java.util.Map;
 public class EditMemberActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = EditMemberActivity.class.getSimpleName();
+
+    private TextView tvToolbarTitle;
+    private ImageView ivBack;
 
     private String userChoosenTask;
 
@@ -95,6 +100,20 @@ public class EditMemberActivity extends BaseActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_edit_member);
+
+        initializeToolbar("", true);
+
+        tvToolbarTitle = findViewById(R.id.header_toolbar_title);
+        tvToolbarTitle.setText("Search Member");
+        ivBack = findViewById(R.id.ivBack);
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
         //For Signup
         etUserId = findViewById(R.id.etId);
         etFullName = findViewById(R.id.etFullName);
@@ -176,6 +195,9 @@ public class EditMemberActivity extends BaseActivity implements View.OnClickList
             case R.id.btnSearhMember:
                 if (isNetworkAvailable()) {
 
+                    JSONObject request = new JSONObject();
+                    boolean isSetAnyValue = false;
+
                     userId = etUserId.getText().toString().trim();
                     fullName = etFullName.getText().toString().trim();
                     fatherName = etFatherName.getText().toString().trim();
@@ -183,8 +205,47 @@ public class EditMemberActivity extends BaseActivity implements View.OnClickList
                     mobileNo = etMobileNo.getText().toString().trim();
                     email = etEmail.getText().toString().trim();
 
-                    //searchMember();
-                    searchMemberInThisWay();
+
+                    try {
+                        //Populate the request parameters
+                        if (!TextUtils.isEmpty(userId)) {
+                            isSetAnyValue = true;
+                            request.put(KEY_ID, userId);
+                        }
+                        if (!TextUtils.isEmpty(fullName)) {
+                            isSetAnyValue = true;
+                            request.put(KEY_NAME, fullName);
+                        }
+                        if (!TextUtils.isEmpty(fatherName)) {
+                            isSetAnyValue = true;
+                            request.put(KEY_FATHER_NAME, fatherName);
+                        }
+                        if (!TextUtils.isEmpty(motherName)) {
+                            isSetAnyValue = true;
+                            request.put(KEY_MOTHER_NAME, motherName);
+                        }
+                        if (!TextUtils.isEmpty(mobileNo)) {
+                            isSetAnyValue = true;
+                            request.put(KEY_MOB, mobileNo);
+                        }
+                        if (!TextUtils.isEmpty(email)) {
+                            isSetAnyValue = true;
+                            request.put(KEY_EMAIL, email);
+                        }
+
+
+                        Log.d(TAG, "Request parameters : " + request.toString());
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    if (isSetAnyValue){
+                        searchMemberInThisWay(request);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Input should not Empty", Toast.LENGTH_SHORT).show();
+                    }
+
 
                 } else {
                     showNetworkError();
@@ -246,6 +307,11 @@ public class EditMemberActivity extends BaseActivity implements View.OnClickList
 
         alertDialog.show();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
 
@@ -320,23 +386,8 @@ public class EditMemberActivity extends BaseActivity implements View.OnClickList
         AppController.getInstance().addToRequestQueue(stringRequest, tag_json_obj);
     }
 
-    private void searchMemberInThisWay() {
+    private void searchMemberInThisWay(JSONObject request) {
         final ProgressDialog searching = ProgressDialog.show(this, "Searching...", "Please wait...", false, false);
-        JSONObject request = new JSONObject();
-        try {
-            //Populate the request parameters
-            request.put(KEY_ID, userId);
-            request.put(KEY_NAME, fullName);
-            request.put(KEY_FATHER_NAME, fatherName);
-            request.put(KEY_MOTHER_NAME, motherName);
-            request.put(KEY_MOB, mobileNo);
-            request.put(KEY_EMAIL, email);
-
-            Log.d(TAG, "Request parameters : " + request.toString());
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
         JsonObjectRequest jsArrayRequest = new JsonObjectRequest
                 (Request.Method.POST, searchUrl, request, new Response.Listener<JSONObject>() {
                     @Override

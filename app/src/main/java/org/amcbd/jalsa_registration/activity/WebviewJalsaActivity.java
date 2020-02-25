@@ -12,7 +12,7 @@ import android.widget.TextView;
 import org.amcbd.jalsa_registration.R;
 import org.amcbd.jalsa_registration.base_url.BaseUrl;
 
-public class AboutUsActivity extends BaseActivity {
+public class WebviewJalsaActivity extends BaseActivity {
 
     private WebView webView;
 
@@ -28,8 +28,9 @@ public class AboutUsActivity extends BaseActivity {
 
         webView = findViewById(R.id.wvAboutUs);
 
+        initializeToolbar("", true);
         tvToolbarTitle = findViewById(R.id.header_toolbar_title);
-        tvToolbarTitle.setText("Jalsa Registration App");
+        tvToolbarTitle.setText("Registration Web App");
         ivBack = findViewById(R.id.ivBack);
 
         ivBack.setOnClickListener(new View.OnClickListener() {
@@ -71,11 +72,11 @@ public class AboutUsActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-       /* if (webView.canGoBack()) {
+        if (webView.canGoBack()) {
             webView.goBack();
         } else {
             super.onBackPressed();
-        }*/
+        }
         super.onBackPressed();
 
     }

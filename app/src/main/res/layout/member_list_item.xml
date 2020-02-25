@@ -38,9 +38,9 @@
             android:id="@+id/tvFullName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/size2"
+            android:layout_marginBottom="@dimen/size1"
             android:ellipsize="end"
-            android:maxLines="1"
+            android:maxLines="2"
             android:text="Sopan Ahmed"
             android:textSize="@dimen/textSize14" />
 
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvFullName"
             android:ellipsize="end"
-            android:layout_marginTop="@dimen/size2"
+            android:layout_marginTop="@dimen/size1"
             android:maxLines="1"
             android:text="Abdul Haque mulla"
             android:textSize="@dimen/textSize12" />
@@ -62,7 +62,7 @@
             android:layout_below="@+id/tvFatherName"
             android:ellipsize="end"
             android:maxLines="1"
-            android:layout_marginTop="@dimen/size2"
+            android:layout_marginTop="@dimen/size1"
             android:text="Mahmuda Begum"
             android:textSize="@dimen/textSize12" />
 
@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvMotherName"
             android:ellipsize="end"
-            android:layout_marginTop="@dimen/size2"
+            android:layout_marginTop="@dimen/size1"
             android:maxLines="1"
             android:text="01700 768034"
             android:textSize="@dimen/textSize12" />

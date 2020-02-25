@@ -71,6 +71,10 @@ import io.reactivex.schedulers.Schedulers;
 public class RegistrationActivity extends BaseActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
     private static final String TAG = RegistrationActivity.class.getSimpleName();
+
+    private TextView tvToolbarTitle;
+    private ImageView ivBack;
+
     public static final int REQUEST_IMAGE = 100;
     private String userChoosenTask;
 
@@ -182,6 +186,19 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         setContentView(R.layout.activity_registration);
 
         session = new SessionHandler(getApplicationContext());
+
+        initializeToolbar("", true);
+
+        tvToolbarTitle = findViewById(R.id.header_toolbar_title);
+        tvToolbarTitle.setText("Registration");
+        ivBack = findViewById(R.id.ivBack);
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         //For Signup
         etFullName = findViewById(R.id.etFullName);
